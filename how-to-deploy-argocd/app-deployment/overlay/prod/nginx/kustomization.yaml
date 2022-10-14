@@ -1,0 +1,7 @@
+bases:
+  - ../../base/nginx
+configMapGenerator:
+  - name: nginx-prod
+    namespace: $(NAMESPACE)
+    envs:
+      - .env

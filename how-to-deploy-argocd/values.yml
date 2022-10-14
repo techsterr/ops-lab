@@ -1,0 +1,26 @@
+configs:
+  credentialTemplates:
+    github-argocd-config:
+      url: https://github.com/techsterr/ops-lab.git
+      githubAppID: $GITHUB_APP_ID
+      githubAppInstallationID: "$GITHUB_APP_INSTALLATION_ID"
+
+redis-ha:
+  enabled: true
+
+controller:
+  enableStatefulSet: true
+
+server:
+  extraArgs:
+    - --insecure
+  service:
+    type: ClusterIP
+  autoscaling:
+    enabled: true
+    minReplicas: 2
+
+repoServer:
+  autoscaling:
+    enabled: true
+    minReplicas: 2

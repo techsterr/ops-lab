@@ -1,0 +1,23 @@
+bases:
+  - ../../base/project
+  - ../../base/apps
+configMapGenerator:
+  - name: application
+    literals:
+      - SOURCE_PATH=how-to-deploy-argocd/app-deployment/overlay/dev
+      - PROJECT_NAME=app-dev
+vars:
+  - name: SOURCE_PATH
+    objref:
+      kind: ConfigMap
+      apiVersion: v1
+      name: application
+    fieldref:
+      fieldpath: data.SOURCE_PATH
+  - name: PROJECT_NAME
+    objref:
+      kind: ConfigMap
+      apiVersion: v1
+      name: application
+    fieldref:
+      fieldpath: data.PROJECT_NAME
